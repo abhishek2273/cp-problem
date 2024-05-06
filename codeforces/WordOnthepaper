@@ -1,0 +1,125 @@
+C. Word on the Paper
+time limit per test
+1 second
+memory limit per test
+256 megabytes
+input
+standard input
+output
+standard output
+
+On an 8×8
+
+grid of dots, a word consisting of lowercase Latin letters is written vertically in one column, from top to bottom. What is it?
+Input
+
+The input consists of multiple test cases. The first line of the input contains a single integer t
+(1≤t≤1000
+
+) — the number of test cases.
+
+Each test case consists of 8
+lines, each containing 8 characters. Each character in the grid is either . (representing a dot) or a lowercase Latin letter (a–z
+
+).
+
+The word lies entirely in a single column and is continuous from the beginning to the ending (without gaps). See the sample input for better understanding.
+Output
+
+For each test case, output a single line containing the word made up of lowercase Latin letters (a
+–z
+
+) that is written vertically in one column from top to bottom.
+Example
+Input
+Copy
+
+5
+........
+........
+........
+........
+...i....
+........
+........
+........
+........
+.l......
+.o......
+.s......
+.t......
+........
+........
+........
+........
+........
+........
+........
+......t.
+......h.
+......e.
+........
+........
+........
+........
+........
+.......g
+.......a
+.......m
+.......e
+a.......
+a.......
+a.......
+a.......
+a.......
+a.......
+a.......
+a.......
+
+Output
+Copy
+
+i
+lost
+the
+game
+aaaaaaaa
+
+
+code------------------------------------------
+#include <bits/stdc++.h>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int t;
+	cin >> t;
+
+	while (t--)
+	{
+		char c[8][8];
+		int i, j;
+
+		char sc[64];
+		int pos = 0;
+		for (i = 0; i < 8; i++)
+		{
+			for (j = 0; j < 8; j++)
+			{
+				cin >> c[i][j];
+				if (c[i][j] != '.')
+				{
+					sc[pos++] = c[i][j];
+				}
+			}
+		}
+
+		for (i = 0; i < pos; i++)
+		{
+			cout << sc[i];
+		}
+		cout << endl;
+	}
+	return 0;
+}
