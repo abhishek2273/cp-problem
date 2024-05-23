@@ -1,0 +1,90 @@
+Invert And Equalize
+
+You are given a binary string SS of length NN. You can perform the following operation on it:
+
+    Choose a continuous substring such that all of its characters are equal, and then invert the whole substring (i.e., if they were 00, change them to 11 and vice versa).
+
+For example, suppose S=101111000S=101111000. We may choose the substring 101111000101111000 and change it to 100000000100000000.
+
+Find the minimum number of such operations needed to make all characters of SS equal.
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of multiple lines of input.
+        The first line of each test case contains one integer NN - the length of the string SS.
+        The second line of each test case contains a binary string SS.
+
+Output Format
+
+For each test case, output on a new line, the minimum number of such operations needed to make all characters of SS equal.
+Constraints
+
+    1≤T≤1041≤T≤104
+    1≤N≤1051≤N≤105
+    ∣S∣=N∣S∣=N
+    Si∈{0,1}Si​∈{0,1}
+    The sum of NN over all test cases does not exceed 2⋅1052⋅105.
+
+Sample 1:
+Input
+Output
+
+3
+9
+101111000
+4
+0110
+1
+1
+
+2
+1
+0
+
+Explanation:
+
+Test case 11 : We can make all characters of the string equal in two operations:
+
+    Operation 11: 101111000→100000000101111000→100000000.
+    Operation 22: 100000000→000000000100000000→000000000.
+
+Test case 22 : We can make all characters of the string equal in one operation:
+
+    0110→00000110→0000.
+--------------------------------------------------
+code
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+void solve()
+{
+	ll len;
+	string s;
+	cin >> len >> s;
+	ll count = 1;
+
+	for (int i = 1; i < len; i++)
+	{
+		if (i > 0 && s[i] != s[i - 1])
+		{
+			count++;
+		}
+	}
+
+	cout << (count / 2) << endl;
+}
+
+int main()
+{
+	int t;
+	cin >> t;
+
+	while (t--)
+	{
+		solve();
+	}
+	return 0;
+}
