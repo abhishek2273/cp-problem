@@ -1,0 +1,85 @@
+Spell Splice
+
+Chef has NN magic spells. The ii-th spell has a volatility of ViVi​ and a strength of AiAi​.
+
+When spells ii and jj (1≤i<j≤N1≤i<j≤N) are activated together, they merge to form a single spell of strength (Ai×Vj+Vi×Aj)(Ai​×Vj​+Vi​×Aj​).
+
+What's the maximum possible strength of a spell Chef can obtain by activating exactly two of his spells?
+Input Format
+
+    The first line of input will contain a single integer TT, denoting the number of test cases.
+    Each test case consists of multiple lines of input.
+        The first line of each test case contains a single integer NN, the number of spells.
+        The next NN lines describe the spells. The ii-th of them contains two space-separated integers ViVi​ and AiAi​ — the volatility and strength of the ii-th spell.
+
+Output Format
+
+For each test case, output on a new line the maximum possible power of a combined spell.
+Constraints
+
+    1≤T≤1001≤T≤100
+    2≤N≤1002≤N≤100
+    1≤Ai,Vi≤10001≤Ai​,Vi​≤1000
+
+Sample 1:
+Input
+Output
+
+3
+2
+1 10
+5 5
+4
+4 7
+8 9
+10 2
+6 6
+4
+35 45
+5 50
+50 5
+45 35
+
+55
+106
+3250
+
+Explanation:
+
+Test case 11: There are only two spells. Combining them results in a spell of strength 1×5+5×10=551×5+5×10=55.
+
+Test case 22: It's optimal to choose the second and third spells. Combining them results in a spell of strength 8×2+10×9=1068×2+10×9=106.
+
+Test case 33: It's optimal to choose the first and fourth spells. Combining them results in a spell of strength 45×45+35×35=325045×45+35×35=3250.
+
+
+------solution-----------------------------------------------------------------
+
+void solve()
+{
+	int n;
+	cin >> n;
+
+	vi a(n);
+	vi v(n);
+
+	FOR(i, 0, n)
+	{
+		cin >> a[i] >> v[i];
+	}
+
+	int max = 0;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			int combination = ((a[i] * v[j]) + (v[i] * a[j]));
+			if (combination > max)
+			{
+				max = combination;
+			}
+		}
+	}
+	cout << max << "\n";
+}
+
