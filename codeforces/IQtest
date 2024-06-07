@@ -1,0 +1,68 @@
+A. IQ test
+time limit per test
+2 seconds
+memory limit per test
+256 megabytes
+input
+standard input
+output
+standard output
+
+Bob is preparing to pass IQ test. The most frequent task in this test is to find out which one of the given n numbers differs from the others. Bob observed that one number usually differs from the others in evenness. Help Bob — to check his answers, he needs a program that among the given n numbers finds one that is different in evenness.
+Input
+
+The first line contains integer n (3 ≤ n ≤ 100) — amount of numbers in the task. The second line contains n space-separated natural numbers, not exceeding 100. It is guaranteed, that exactly one of these numbers differs from the others in evenness.
+Output
+
+Output index of number that differs from the others in evenness. Numbers are numbered from 1 in the input order.
+Examples
+Input
+Copy
+
+5
+2 4 7 8 10
+
+Output
+Copy
+
+3
+
+Input
+Copy
+
+4
+1 2 1 1
+
+Output
+Copy
+
+2
+----------code--------------------------------
+void solve()
+{
+	int n;
+	cin >> n;
+
+	vi v(n);
+	fl(i, n) cin >> v[i];
+
+	vi v_oddstore;
+	vi v_evenstore;
+
+	FOR(i, 0, n)
+	{
+		if (v[i] % 2)
+			v_evenstore.push_back(i + 1);
+		else
+			v_oddstore.push_back(i + 1);
+	}
+
+	if (v_oddstore.size() < v_evenstore.size())
+	{
+		cout << v_oddstore[0] << endl;
+	}
+	else
+	{
+		cout << v_evenstore[0] << endl;
+	}
+}
