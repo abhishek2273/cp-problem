@@ -1,0 +1,71 @@
+PROBLEM- 230A DRAGONS CODEFORCES
+Examples
+Input
+Copy
+
+2 2
+1 99
+100 0
+
+Output
+Copy
+
+YES
+
+Input
+Copy
+
+10 1
+100 100
+
+Output
+Copy
+
+NO
+
+Note
+
+In the first sample Kirito's strength initially equals 2. As the first dragon's strength is less than 2, Kirito can fight it and defeat it. After that he gets the bonus and his strength increases to 2 + 99 = 101. Now he can defeat the second dragon and move on to the next level.
+
+In the second sample Kirito's strength is too small to defeat the only dragon and win.
+
+
+--------------------------
+  SOLUTION
+--------------------------
+
+void solve()
+{
+	int s, n;
+	cin >> s >> n;
+
+	pair<int, int> arr[1000];
+	bool flag = 1;
+
+	for (int i = 0; i < n; i++)
+	{
+		cin >> arr[i].first >> arr[i].second;
+	}
+	sort(arr, arr + n);
+
+	for (int i = 0; i < n; i++)
+	{
+
+		if (s <= arr[i].first)
+		{
+			flag = 0;
+			break;
+		}
+
+		s += arr[i].second;
+	}
+
+	if (flag)
+	{
+		py;
+	}
+	else
+	{
+		pn;
+	}
+}
