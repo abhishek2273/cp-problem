@@ -1,0 +1,41 @@
+Split With Minimum Sum -
+
+
+Example 1:
+
+Input: num = 4325
+Output: 59
+Explanation: We can split 4325 so that num1 is 24 and num2 is 35, giving a sum of 59. We can prove that 59 is indeed the minimal possible sum.
+
+Example 2:
+
+Input: num = 687
+Output: 75
+Explanation: We can split 687 so that num1 is 68 and num2 is 7, which would give an optimal sum of 75.
+
+
+SOLUTION ----
+
+class Solution {
+public:
+    int splitNum(int num) {
+
+        string s = to_string(num);
+
+        sort(s.begin(), s.end());
+
+        string num1 = "";
+        string num2 = "";
+
+        for (auto c : s) {
+            if (c % 2 == 0) {
+                num1 = num1 + c;
+            } else {
+                num2 += c;
+            }
+        }
+
+        return (stoi(num1) + stoi(num2));
+    }
+};
+
