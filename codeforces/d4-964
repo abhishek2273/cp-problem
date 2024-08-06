@@ -1,0 +1,102 @@
+
+B: CARD GAME 
+Input
+Copy
+
+5
+3 8 2 6
+1 1 1 1
+10 10 2 2
+1 1 10 10
+3 8 7 2
+
+Output
+Copy
+
+2
+0
+4
+0
+2
+
+Note
+
+Consider the first test case when Slavic starts with the cards that have the values 2
+and 6, and Suneet starts with cards that have the values 3 and 8. The game could happen in 4
+
+different ways:
+
+    Suneet flips 3
+
+and Slavic flips 2. Suneet wins the first round. Then, Suneet flips 8 and Slavic flips 6. Suneet wins the second round as well. Since Suneet won 2
+rounds, he wins the game.
+
+Suneet flips 3
+and Slavic flips 6. Slavic wins the first round. Then, Suneet flips 8 and Slavic flips 2
+. Suneet wins the second round. Nobody wins since both players won an equal amount of rounds.
+
+Suneet flips 8
+and Slavic flips 6. Suneet wins the first round. Then, Suneet flips 3 and Slavic flips 2. Suneet wins the second round as well. Since Suneet won 2
+rounds, he wins the game.
+
+Suneet flips 8
+and Slavic flips 2. Suneet wins the first round. Then, Suneet flips 3 and Slavic flips 6. Slavic wins the round. Nobody wins since both players won an equal amount of rounds. 
+
+---------------------------------------
+  
+#include<bits/stdc++.h>
+    using namespace std;
+     
+     
+    void solve()
+    {
+    	int a1, a2, b1, b2;
+    	cin >> a1 >> a2 >> b1 >> b2;
+    	vector<int> suneet = {a1, a2};
+    	vector<int> salvic = {b1, b2};
+     
+    	vector<pair<int, int>> per = {
+    		{0, 1}, {1, 0}};
+     
+    	int winCount = 0;
+     
+    	for (auto sa : per)
+    	{
+    		for (auto slb : per)
+    		{
+    			int suneet_round = 0;
+    			int salvic_round = 0;
+     
+    			if (suneet[sa.first] > salvic[slb.first])
+    				suneet_round++;
+    			else if (salvic[slb.first] > suneet[sa.first])
+    				salvic_round++;
+     
+    			if (suneet[sa.second] > salvic[slb.second])
+    				suneet_round++;
+    			else if (salvic[slb.second] > suneet[sa.second])
+    				salvic_round++;
+     
+    			if (suneet_round > salvic_round)
+    				winCount++;
+    		}
+     
+    	}
+    		cout << winCount << "\n";
+    }
+     
+    int main()
+    {
+    	
+     
+    	int t;
+    	cin >> t;
+     
+    	while (t--)
+    	{
+    		solve();
+     
+    	}
+     
+    	return 0;
+    }
