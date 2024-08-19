@@ -1,0 +1,53 @@
+/*
+ If there are no occupied seats in the bus, a passenger can sit in any free seat;
+Otherwise, a passenger should sit in any free seat that has at least one occupied neighboring seat. In other words, a passenger can sit in a seat with index i
+(1≤i≤n) only if at least one of the seats with indices i−1 or i+1 is occupied. 
+For example, if n=5, and a = [5,4,2,1,3], then the recommendations were not followed, as the 3-rd passenger sat in seat number 2, while the neighboring seats with numbers 1 and 3 were free.
+4
+5
+5 4 2 1 3
+3
+2 3 1
+4
+2 3 1 4
+5
+1 2 3 5 4
+NO
+YES
+YES
+NO
+*/
+
+void solve()
+{
+	int n;
+	cin >> n;
+
+	int arr[n + 2] = 0;
+	int f = 0;
+
+	for (int i = 1; i <= n; i++)
+	{
+		int x;
+		cin >> x;
+		if (i == 1)
+		{
+			arr[x] = 1;
+			continue;
+		}
+
+		if (arr[x + 1] || arr[x - 1])
+			arr[x] = 1;
+		else
+			f = 1;
+	}
+	if (f == 1)
+	{
+		cout << "NO\n";
+		return;
+	}
+	else
+	{
+		cout << "YES\n";
+	}
+}
